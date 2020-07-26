@@ -2,7 +2,20 @@
 	ui-engine-v2
 	version 1.3a
 	by Singularity (V3rm @ King Singularity) (Discord @ Singularity#5490)
+	edited by vortex
 --]]
+
+local charset = {}
+for i = 48, 57 do table.insert(charset, string.char(i)) end
+for i = 65, 90 do table.insert(charset, string.char(i)) end
+for i = 97, 122 do table.insert(charset, string.char(i)) end
+function RandomCharacters(length)
+    if length > 0 then
+        return RandomCharacters(length - 1) .. charset[math.random(1, #charset)]
+    else
+        return ""
+    end
+end
 
 local ui_options = {
 	main_color = Color3.fromRGB(41, 74, 122),
@@ -89,7 +102,7 @@ local Input = Instance.new("TextButton")
 local Input_Roundify_4px = Instance.new("ImageLabel")
 local Windows = Instance.new("Frame")
 
-imgui.Name = "imgui"
+imgui.Name = RandomCharacters(math.random(5,30))
 imgui.Parent = game:GetService("CoreGui")
 
 Prefabs.Name = "Prefabs"
